@@ -33,9 +33,9 @@ public class ConfigProvider {
     private static ResourceBundle getProperties() {
         if (properties == null) {
             try {
-                properties = new PropertyResourceBundle(Resources.getResource("config/config.properties").openStream());
+                properties = new PropertyResourceBundle(Resources.getResource("config.properties").openStream());
             } catch (IOException e) {
-                throw new ConfigurationException("Unable to open config/config.properties");
+                throw new ConfigurationException("Unable to open config.properties");
             }
         }
         return properties;

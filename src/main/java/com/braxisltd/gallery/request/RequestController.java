@@ -16,6 +16,7 @@ public class RequestController {
     }
 
     public void handleRequest(Request request, Response response) {
+        logger.debug(String.format("Loading resource for %s", request.getTarget()));
         try {
             for (RequestHandler handler : handlers) {
                 if (handler.canHandle(request)) {
