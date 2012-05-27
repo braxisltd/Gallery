@@ -14,12 +14,6 @@ braxis.GalleryController.prototype = {
             preload:8,
             showInfo:false
         });
-        $("#navigation li.categories").mouseover(function () {
-            $("#categories").removeClass("hidden");
-        });
-        $("#navigation li.categories").mouseout(function () {
-            $("#categories").addClass("hidden");
-        });
     },
 
     resize: function() {

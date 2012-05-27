@@ -5,8 +5,8 @@ import com.braxisltd.gallery.Domain.Category;
 import com.braxisltd.gallery.Domain.Heading;
 import com.braxisltd.gallery.application.ApplicationConfig;
 import com.braxisltd.gallery.request.models.AboutModel;
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 
 import java.util.List;
 
@@ -17,12 +17,12 @@ public class AboutHandler extends ViewRequestHandler {
     }
 
     @Override
-    public boolean canHandle(Request request) {
+    public boolean canHandle(GalleryRequest request) {
         return request.getTarget().equals("/");
     }
 
     @Override
-    public void handle(Request request, Response response) throws Exception {
+    public void handle(GalleryRequest request, GalleryResponse response) throws Exception {
         List<Category> categories = loadCategories();
         String heading = new Heading(config()).load().getHeading();
         view("about.ftl")

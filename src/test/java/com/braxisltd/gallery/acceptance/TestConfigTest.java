@@ -13,7 +13,7 @@ public class TestConfigTest {
 
     @Test
     public void shouldFindImageRoot() throws Exception {
-        String imageRoot = new TestConfig().getDirectoryRoot();
+        String imageRoot = AcceptanceTestConfig.get().getDirectoryRoot();
         System.out.println(imageRoot);
         List<String> list = newArrayList(new File(imageRoot).list());
         assertThat(list, hasItem("Category_One"));

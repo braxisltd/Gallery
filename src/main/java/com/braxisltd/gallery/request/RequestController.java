@@ -1,7 +1,7 @@
 package com.braxisltd.gallery.request;
 
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +15,7 @@ public class RequestController {
         this.handlers = handlers;
     }
 
-    public void handleRequest(Request request, Response response) {
+    public void handleRequest(GalleryRequest request, GalleryResponse response) {
         logger.debug(String.format("Loading resource for %s", request.getTarget()));
         try {
             for (RequestHandler handler : handlers) {

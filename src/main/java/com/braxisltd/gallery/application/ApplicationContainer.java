@@ -1,6 +1,8 @@
 package com.braxisltd.gallery.application;
 
 import com.braxisltd.gallery.request.*;
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import org.simpleframework.http.Request;
 import org.simpleframework.http.Response;
 import org.simpleframework.http.core.Container;
@@ -20,6 +22,6 @@ public class ApplicationContainer implements Container {
                 new ImageHandler(config),
                 new StyleHandler(),
                 new ScriptHandler())
-                .handleRequest(request, response);
+                .handleRequest(GalleryRequest.requestFor(request), GalleryResponse.responseFor(response));
     }
 }

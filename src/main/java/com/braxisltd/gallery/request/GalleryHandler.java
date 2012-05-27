@@ -5,14 +5,14 @@ import com.braxisltd.gallery.Domain.Heading;
 import com.braxisltd.gallery.Domain.Image;
 import com.braxisltd.gallery.application.ApplicationConfig;
 import com.braxisltd.gallery.request.models.GalleryModel;
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -28,12 +28,12 @@ public class GalleryHandler extends ViewRequestHandler {
     }
 
     @Override
-    public boolean canHandle(Request request) {
+    public boolean canHandle(GalleryRequest request) {
         return request.getTarget().startsWith("/categories/");
     }
 
     @Override
-    public void handle(Request request, Response response) throws Exception {
+    public void handle(GalleryRequest request, GalleryResponse response) throws Exception {
         File imageRoot = new File(config().getDirectoryRoot());
         List<Category> categories = loadCategories();
         String heading = new Heading(config()).load().getHeading();
@@ -42,7 +42,7 @@ public class GalleryHandler extends ViewRequestHandler {
                 .render(response);
     }
 
-    private Category parseCategory(Request request, final List<Category> categories) {
+    private Category parseCategory(GalleryRequest request, final List<Category> categories) {
         final List<String> segments = newArrayList(Splitter.on("/").omitEmptyStrings().split(request.getTarget()));
         if (segments.size() > 1 && segments.get(0).equals("categories")) {
             Optional<Category> categoryOptional = Iterables.tryFind(categories, new Predicate<Category>() {

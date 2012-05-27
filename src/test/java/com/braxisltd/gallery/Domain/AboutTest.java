@@ -1,6 +1,6 @@
 package com.braxisltd.gallery.Domain;
 
-import com.braxisltd.gallery.acceptance.TestConfig;
+import com.braxisltd.gallery.acceptance.AcceptanceTestConfig;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class AboutTest {
 
     @Before
     public void before() throws Exception {
-        about = new About(new TestConfig());
+        about = new About(AcceptanceTestConfig.get());
     }
 
     @Test(expected = IllegalStateException.class)

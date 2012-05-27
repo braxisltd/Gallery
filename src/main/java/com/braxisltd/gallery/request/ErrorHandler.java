@@ -1,7 +1,7 @@
 package com.braxisltd.gallery.request;
 
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 
 import java.io.OutputStreamWriter;
 
@@ -10,12 +10,12 @@ public class ErrorHandler implements RequestHandler {
     }
 
     @Override
-    public boolean canHandle(Request request) {
+    public boolean canHandle(GalleryRequest request) {
         return false;
     }
 
     @Override
-    public void handle(Request request, Response response) throws Exception {
+    public void handle(GalleryRequest request, GalleryResponse response) throws Exception {
         OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
         writer.append("Sorry, an error has occurred.");
         writer.flush();

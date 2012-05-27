@@ -31,17 +31,22 @@ a, a:active, a:visited {
     padding-bottom: 0.3em;
     font-style: normal;
     margin-right: 10px;
+    text-transform: uppercase;
+    font-family: arial, verdana;
+    font-weight: bold;
 }
 
 #categories {
     position: absolute;
     z-index: 3;
-    background-color: #666;
+    background-color: #333;
     padding: 0.4em;
     margin-top: 0.3em;
     -webkit-border-radius: 0 0 0.6em 0;
     -moz-border-radius: 0 0 0.6em 0;
     border-radius: 0 0 0.6em 0;
+    text-transform: uppercase;
+    font-family: arial, verdana;
 }
 
 #categories li {
@@ -55,7 +60,7 @@ a, a:active, a:visited {
 }
 
 div.heading h1 {
-    color: #bbb;
+    color: #ddd;
     padding-top: 2em;
     padding-bottom: 1em;
     font-size: 1.5em;

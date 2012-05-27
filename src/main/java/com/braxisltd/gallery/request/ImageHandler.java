@@ -2,9 +2,9 @@ package com.braxisltd.gallery.request;
 
 import com.braxisltd.gallery.application.ApplicationConfig;
 import com.braxisltd.gallery.request.stuff.ImageMimeType;
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import com.google.common.io.Files;
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
 
 import java.io.File;
 import java.io.OutputStream;
@@ -22,12 +22,12 @@ public class ImageHandler implements RequestHandler {
     }
 
     @Override
-    public boolean canHandle(Request request) {
+    public boolean canHandle(GalleryRequest request) {
         return request.getTarget().startsWith(IMAGE_ROOT);
     }
 
     @Override
-    public void handle(Request request, Response response) throws Exception {
+    public void handle(GalleryRequest request, GalleryResponse response) throws Exception {
         File image = new File(config.getDirectoryRoot(), request.getTarget().replaceFirst(quote(IMAGE_ROOT), ""));
         byte[] imageData = Files.toByteArray(image);
         long time = System.currentTimeMillis();

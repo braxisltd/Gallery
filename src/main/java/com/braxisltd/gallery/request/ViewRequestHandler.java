@@ -2,13 +2,13 @@ package com.braxisltd.gallery.request;
 
 import com.braxisltd.gallery.Domain.Category;
 import com.braxisltd.gallery.application.ApplicationConfig;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.simpleframework.http.Response;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,14 +64,14 @@ public abstract class ViewRequestHandler implements RequestHandler {
             return this;
         }
 
-        protected void render(Response response) throws IOException, TemplateException {
+        protected void render(GalleryResponse response) throws IOException, TemplateException {
             setHeaders(response);
             OutputStreamWriter body = new OutputStreamWriter(response.getOutputStream());
             template.process(models, body);
             body.close();
         }
 
-        private void setHeaders(Response response) {
+        private void setHeaders(GalleryResponse response) {
             long time = System.currentTimeMillis();
             response.set("Content-Type", "text/html");
             response.set("Server", "SimpleHelloWorld/1.0 (Simple 4.0)");

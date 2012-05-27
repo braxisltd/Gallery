@@ -70,7 +70,7 @@ public class Categories extends PageTestContext {
 
     public void select(final Category category) {
         for (WebElement categoryItem : categoryItems) {
-            if (categoryItem.getText().equals(category.getName())) {
+            if (categoryItem.getText().equals(category.getName().toUpperCase())) {
                 categoryItem.findElement(cssSelector("a")).click();
                 break;
             }

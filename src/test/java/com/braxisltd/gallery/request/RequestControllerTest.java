@@ -1,9 +1,9 @@
 package com.braxisltd.gallery.request;
 
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import org.junit.Before;
 import org.junit.Test;
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
 
 import static org.mockito.Mockito.*;
 
@@ -11,8 +11,8 @@ public class RequestControllerTest {
 
     private final RequestHandler firstAdded = mock(RequestHandler.class);
     private final RequestHandler secondAdded = mock(RequestHandler.class);
-    private final Request request = mock(Request.class);
-    private final Response response = mock(Response.class);
+    private final GalleryRequest request = mock(GalleryRequest.class);
+    private final GalleryResponse response = mock(GalleryResponse.class);
     private final RequestController requestController = new RequestController(firstAdded, secondAdded);
 
     @Before

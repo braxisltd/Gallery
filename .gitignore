@@ -2,3 +2,4 @@ target/
 sandbox/
 chromedriver.log
 *.jar
+.idea/libraries/

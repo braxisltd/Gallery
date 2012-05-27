@@ -1,9 +1,9 @@
 package com.braxisltd.gallery.request;
 
+import com.braxisltd.gallery.request.wrappers.GalleryRequest;
+import com.braxisltd.gallery.request.wrappers.GalleryResponse;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.Resources;
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
 
 import java.io.OutputStream;
 import java.net.URL;
@@ -12,7 +12,7 @@ import static java.util.regex.Pattern.quote;
 
 public abstract class ClassPathResourceHandler implements RequestHandler {
     @Override
-    public void handle(Request request, Response response) throws Exception {
+    public void handle(GalleryRequest request, GalleryResponse response) throws Exception {
         URL resource = Resources.getResource(getClass(), String.format("%s%s", root(), file(request)));
         long time = System.currentTimeMillis();
         response.set("Server", "SimpleHelloWorld/1.0 (Simple 4.0)");
@@ -24,11 +24,11 @@ public abstract class ClassPathResourceHandler implements RequestHandler {
     }
 
     @Override
-    public boolean canHandle(Request request) {
+    public boolean canHandle(GalleryRequest request) {
         return request.getTarget().startsWith(String.format("/%s", root()));
     }
 
-    private String file(Request request) {
+    private String file(GalleryRequest request) {
         return request.getTarget().replaceFirst(quote("/"), "").replaceFirst(quote(root()), "");
     }
 
